@@ -27,11 +27,11 @@ all_posts = [
          """
     },
     {
-         "slug":"the-MountainsB",
-         "image":"mountains.png",
+         "slug":"woods",
+         "image":"woods.jpg",
          "author":"MAXIMILIAN",
          "date": date(2021,7,21),
-         "title":"Mountain HikingB",
+         "title":"woods",
          "excerpt":"There's nothing like the views you get when hiking in the Mountain And I wasn't even prepared for  what happened whilst I was enjoying the view",
          "content":""" 
          Lorem ipusm dolor amet consectetor adipisicing elit.Officiis nobis
