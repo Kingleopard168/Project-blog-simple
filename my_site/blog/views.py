@@ -3,51 +3,9 @@ from django.shortcuts import render
 
 from datetime import date
 
+from .models import Post
 all_posts = [
-    {
-         "slug":"the-Mountains",
-         "image":"mountains.png",
-         "author":"MAXIMILIAN",
-         "date": date(2021,7,21),
-         "title":"Mountain Hiking",
-         "excerpt":"There's nothing like the views you get when hiking in the Mountain And I wasn't even prepared for  what happened whilst I was enjoying the view",
-         "content":""" 
-         Lorem ipusm dolor amet consectetor adipisicing elit.Officiis nobis
-            aperiam est prasentium, quos iste consequuntur omnis exercitationem quam
-            velit labore vero cula ad mollitia? quis architecto ipsam nemo. Odio.
-
-            Lorem ipusm dolor amet consectetor adipisicing elit.Officiis nobis
-            aperiam est prasentium, quos iste consequuntur omnis exercitationem quam
-            velit labore vero cula ad mollitia? quis architecto ipsam nemo. Odio.
-
-            Lorem ipusm dolor amet consectetor adipisicing elit.Officiis nobis
-            aperiam est prasentium, quos iste consequuntur omnis exercitationem quam
-            velit labore vero cula ad mollitia? quis architecto ipsam nemo. Odio.
-
-         """
-    },
-    {
-         "slug":"woods",
-         "image":"woods.jpg",
-         "author":"MAXIMILIAN",
-         "date": date(2021,7,21),
-         "title":"woods",
-         "excerpt":"There's nothing like the views you get when hiking in the Mountain And I wasn't even prepared for  what happened whilst I was enjoying the view",
-         "content":""" 
-         Lorem ipusm dolor amet consectetor adipisicing elit.Officiis nobis
-            aperiam est prasentium, quos iste consequuntur omnis exercitationem quam
-            velit labore vero cula ad mollitia? quis architecto ipsam nemo. Odio.
-
-            Lorem ipusm dolor amet consectetor adipisicing elit.Officiis nobis
-            aperiam est prasentium, quos iste consequuntur omnis exercitationem quam
-            velit labore vero cula ad mollitia? quis architecto ipsam nemo. Odio.
-
-            Lorem ipusm dolor amet consectetor adipisicing elit.Officiis nobis
-            aperiam est prasentium, quos iste consequuntur omnis exercitationem quam
-            velit labore vero cula ad mollitia? quis architecto ipsam nemo. Odio.
-
-         """
-    }
+    
 ]
 
 def get_date(post):
@@ -56,8 +14,7 @@ def get_date(post):
 # Create your views here.
 
 def starting_page(request):
-    sorted_posts= sorted(all_posts,key=get_date)
-    latest_posts= sorted_posts[-3:]
+    latest_posts = Post.objects.all().order_by("-date")[:3]
     return render(request, "blog/index.html",{
         "posts":latest_posts
     }
